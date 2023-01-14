@@ -1,0 +1,23 @@
+.paper {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    background-color: white !important;
+}
+
+.divider {
+    border-color: #2f2f2f !important;
+    height: 28px !important;
+    margin: 4px !important;
+}
+
+.icon {
+    color: #2f2f2f !important;
+    padding: 10px !important;
+}
+
+.input {
+    color: #2f2f2f !important;
+    flex: 1px;
+    margin: 8px;
+}
