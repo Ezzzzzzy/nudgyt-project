@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import "./SearchBarStyle.css"
 import { AppDispatch } from '../../store/store';
 import { editUsername } from '../../store/Home/UserSlice';
+import { fetchUsers } from '../../store/Home/UserThunk';
 
 interface SearchBarProps {
 
@@ -19,12 +20,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({ }) => {
 
     const onSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        dispatch(editUsername({ value: value.current }))
+        dispatch(fetchUsers(value.current))
     }
 
     return (
         <form>
-
             <Paper
                 component="form"
                 className="paper"

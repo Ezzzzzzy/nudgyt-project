@@ -3,14 +3,11 @@ import { GitHub, Search } from '@mui/icons-material';
 import { Grid } from '@mui/material';
 import "./style/HomeStyle.css"
 import { SearchBar } from '../../components/search/SearchBar';
-import { AppDispatch } from '../../store/store';
 interface HomeProps {
 
 }
 
 export const Home: React.FC<HomeProps> = ({ }) => {
-    const value = useRef<string>("")
-    const dispatch = AppDispatch();
     return (
         <Grid
             container

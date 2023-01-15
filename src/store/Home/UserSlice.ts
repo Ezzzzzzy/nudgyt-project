@@ -1,12 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { InitialState } from './UserInterface'
+import { fetchUsers } from './UserThunk'
 
-export interface Username {
-    value: string
-}
-
-const initialState: Username = {
-    value: ""
+const initialState: InitialState = {
+    username: {
+        value: ""
+    },
+    user: {
+        login: "",
+        id: 0,
+        avatar_url: "",
+        url: "",
+        repos_url: "",
+        organizations_url: ""
+    },
+    users: []
 }
 
 export const UsernameSlice = createSlice({
@@ -14,8 +23,13 @@ export const UsernameSlice = createSlice({
     initialState,
     reducers: {
         editUsername: (state, action: PayloadAction<{ value: string }>) => {
-            state.value = action.payload.value
+            state.username.value = action.payload.value
         },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchUsers.fulfilled, (state, action) => {
+            state.users = action.payload.items.slice(0, 6)
+        })
     }
 })
 
